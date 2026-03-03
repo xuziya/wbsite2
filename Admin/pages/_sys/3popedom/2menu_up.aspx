@@ -1,0 +1,52 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Admin/master/form.master" CodeFile="2menu_up.aspx.cs" Inherits="Admin_sys_popedom_menu_up" %>
+
+<asp:Content ID="Content2" ContentPlaceHolderID="body" Runat="Server">
+    <table class="table table-bordered table-hover">
+        <tr>
+            <th width="100px">权限名称<span class="form-red">*</span></th>
+            <td colspan="3"><asp:TextBox ID="name" runat="server" class="form-input" MaxLength="20" autocomplete="off"></asp:TextBox></td>
+        </tr>
+        <tr>
+            <th>排序</th>
+            <td colspan="3"><asp:TextBox ID="indexs" runat="server" class="form-input" Width="100px" MaxLength="2" autocomplete="off" onkeyup="this.value=this.value.replace(/[^-|\d*]/,'')" onafterpaste="harry.onlyInt(this)"></asp:TextBox></td>
+        </tr>
+        <tr style="display:none">
+            <th>全 路 径</th>
+            <td colspan="3"><asp:TextBox ID="path" runat="server" class="form-input" MaxLength="100" autocomplete="off"></asp:TextBox></td>
+        </tr>
+        <tr>
+            <th>页面地址</th>
+            <td colspan="3"><asp:TextBox ID="string1" runat="server" class="form-input" MaxLength="100" autocomplete="off"></asp:TextBox></td>
+        </tr>
+        <tr>
+            <th>备注</th>
+            <td colspan="3"><asp:TextBox ID="note" runat="server" class="form-input" MaxLength="100" autocomplete="off"></asp:TextBox></td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td colspan="3">
+                <label><input type="checkbox" id="isMain" runat="server" class="form-checkbox"/> 是否权限</label>
+                <label><input type="checkbox" id="isUsed" runat="server" class="form-checkbox"/> 正常使用</label>
+            </td>
+        </tr>
+        <tr>
+            <td width="100px">自动编码</td><td runat="server" id="id">&nbsp;</td>
+            <td width="100px">唯一编码</td><td runat="server" id="sole">&nbsp;</td>
+        </tr>
+        <tr>
+            <td>层级编码</td><td runat="server" id="code">&nbsp;</td>
+            <td>菜单等级</td><td runat="server" id="lev">&nbsp;</td>
+        </tr>
+        <tr>
+            <td>创 建 人</td><td runat="server" id="createSole">&nbsp;</td>
+            <td>创建时间</td><td runat="server" id="createDate">&nbsp;</td>
+        </tr>
+        <tr>
+            <td style="padding:20px 200px" colspan="4">
+                <%--<asp:Button id="Button1" runat="server" class="btn btn-primary" Text="确&nbsp;&nbsp;认" OnClick="Button1_Click" />--%>
+                <%--<asp:Button id="Button2" runat="server" class="btn btn-primary" Text="确&nbsp;&nbsp;认" OnClick="Button2_Click" />--%>
+                <button class="btn btn-primary" onclick="location.href=location.href">刷&nbsp;&nbsp;新</button>
+            </td>
+        </tr>
+    </table>
+</asp:Content>

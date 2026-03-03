@@ -1,0 +1,17 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+<script>
+
+    //弹幕
+    this.fly = function (tag, content)
+    {
+        $(".bg1").append($("<div class='danmu' style='left:2100px;top:" + random(300, 500) + "px'><img id='danmu_image' src='/Upload/game/bq/" + (tag || "一般") + ".gif'/><p id='danmu_content'>" + (content || "") + "</p></div>").animate({ left: "-500px" }, 15 * 1000, function () { $(this).remove(); }));
+    };
+</script>
+</body>
+</html>

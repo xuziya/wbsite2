@@ -1,0 +1,94 @@
+﻿using System;
+using System.Collections;
+using System.Data;
+using System.IO;
+using harry.DAL.Sql.Sql2008;
+using harry.Tools;
+
+public partial class Admin_pages_game_learn_2learn_files_ad : AdminBasePage
+{
+    private string oper = string.Empty;
+    protected override void Page_Load(object sender, EventArgs e)
+    {
+        base.Page_Load(sender, e);
+        oper = (ViewState["oper"] ?? (ViewState["oper"] = Request["oper"] ?? "add")).ToString();
+        if (!IsPostBack)
+        {
+            lid.InnerHtml = Request["lid"] ?? ""; if (lid.InnerHtml == "") { this.Alert("无效的资料编号"); return; }
+            tid.InnerHtml = Request["tid"] ?? ""; if (tid.InnerHtml == "") { this.Alert("无效的资料类型编号"); return; }
+            //显示信息
+            string id = Request["id"] ?? "0", sole = Request["sole"] ?? "";
+            if (oper == "up" && (id != "0" || sole != ""))
+            {
+                DataTable dt1 = skin.GetDT("select * from learn_detail where id=" + id);
+                if (dt1.Rows.Count > 0)
+                {
+                    ViewState.Add("id", dt1.Rows[0]["id"].ToString());
+                    ViewState.Add("saveURL", dt1.Rows[0]["savePath1"].ToString());
+
+                    name.Text = dt1.Rows[0]["name"].ToString();
+                    string _saveURL = dt1.Rows[0]["savePath1"].ToString();
+                    if (_saveURL != "")
+                    {
+                        path1.Text = "<a href='" + _saveURL + "' target='_blank'>文件地址：" + _saveURL + "</a>";
+                    }
+                    note.Text = dt1.Rows[0]["note"].ToString();
+                }
+            }
+        }
+        Button3.Visible = oper == "up";
+    }
+
+    public string getName()
+    {
+        return Request["name"] ?? "";
+    }
+
+    /// <summary>提交信息</summary>
+    protected void Button1_Click(object sender, EventArgs e)
+    {
+        if (name.Text == "") { this.Alert("请输入标题"); name.Focus(); return; }
+        if (oper == "add" && !FileUpload1.HasFile) { this.Alert("请选择需要上传的文件"); return; }
+
+        ArrayList sql = new ArrayList();
+        string _saveURL = !FileUpload1.HasFile ? (oper == "add" ? "" : ViewState["saveURL"].ToString()) : harry.Tools.IO.FileEx.GetFilePath("/Upload/learn/", FileUpload1, true, true);
+        if (oper == "add")
+        {
+            sql.Add(@"insert into learn_detail values('','" + tid.InnerHtml + "','" + lid.InnerHtml + "','" + name.Text + "','" + _saveURL + "','',1,'" + GetSole() + "','" + GetDateTime() + "','" + note.Text + "');");
+            sql.Add(harry.Tools.Common.SetSole("learn_detail"));
+        }
+        else if (oper == "up")
+        {
+            sql.Add(@"update [learn_detail] set [name]='" + name.Text + "',[savePath1]='" + _saveURL + "',[note]='" + note.Text + "' where [id]=" + ViewState["id"] + ";");
+        }
+        bool result = skin.Transaction(sql);
+        if (result)
+        {
+            if (FileUpload1.HasFile)
+            {
+                //保存文件
+                harry.Tools.IO.FileEx.SaveFile(_saveURL, FileUpload1, oper == "add" ? "" : ViewState["saveURL"].ToString());
+                ViewState["saveURL"] = _saveURL;
+                //缓存信息
+                path1.Text = "<a href='" + _saveURL + "' target='_blank'>文件地址：" + _saveURL + "</a>";
+            }
+        }
+        this.AlertSubmit(result);
+    }
+
+    /// <summary>删除文件</summary>
+    protected void Button2_Click(object sender, EventArgs e)
+    {
+        string[] alert = { "操作失败", "操作成功" };
+        bool result = skin.ExecuteSql("delete from [learn_detail] where id=" + (Request["id"])) > 0;
+        if (result)
+        {
+            string saveURL = (ViewState["saveURL"] ?? "").ToString();
+            if (saveURL != "" && File.Exists(Server.MapPath("~" + saveURL)))
+            {
+                File.Delete(Server.MapPath("~" + saveURL));
+            }
+        }
+        this.AlertSubmit(result, alert, true, "location.href", "");
+    }
+}

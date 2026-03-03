@@ -1,0 +1,45 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Admin/master/form.master" CodeFile="1login_clear.aspx.cs" Inherits="Admin_pages__sys_log_1login_clear" %>
+
+<asp:Content ID="Content2" ContentPlaceHolderID="body" Runat="Server">
+    <div class="layui-fluid">
+        <div class="layui-col-md6">
+            <table class="layui-table" style="margin:0">
+                <tr>
+                    <th width="170px">数量统计</th>
+                    <td><%=GetSum() %></td>
+                </tr>
+                <tr>
+                    <th>月内统计</th>
+                    <td style="padding:0">
+                        <table cellspacing="0" cellpadding="0" class="addDataTable" style="border-right:1px solid #e0e0e0;width:350px">
+                            <tr>
+                                <td width="60" align="center">排序</td>
+                                <td width="150" align="center">时间</td>
+                                <td width="100" align="center">数量</td>
+                            </tr>
+                            <tbody><%=GetCount() %></tbody>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <th width="170px">日志清理</th>
+                    <td>
+                        <asp:DropDownList ID="type" runat="server" class="form-select" Width="206px">
+                            <asp:ListItem Value="0">清理全部日志</asp:ListItem>
+                            <asp:ListItem Value="3" Selected="True">清理3天外日志</asp:ListItem>
+                            <asp:ListItem Value="7">清理7天外日志</asp:ListItem>
+                            <asp:ListItem Value="15">清理15天外日志</asp:ListItem>
+                            <asp:ListItem Value="30">清理30天外日志</asp:ListItem>
+                        </asp:DropDownList>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding:20px 200px" colspan="2">
+                        <div class="whiteBotton"><asp:Button ID="Button1" runat="server" Text="确认清理" onclick="Button1_Click" OnClientClick="return confirm('确认清理？');" /></div>
+                        <div class="whiteBotton" onclick="location.href=location.href">重   置</div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</asp:Content>

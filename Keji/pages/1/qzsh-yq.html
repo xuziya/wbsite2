@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html style="touch-action: none;">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0" />
+		<title></title>
+		<link rel="stylesheet" href="../../css/normalize.css">
+		<link rel="stylesheet" href="../../css/animate.min.css">
+		<link rel="stylesheet" href="../../css/swiper.min.css">
+		<link rel="stylesheet" href="../../css/liMarquee.css">
+		<link rel="stylesheet" href="../../css/base.css">	
+		<link rel="stylesheet" href="../../css/style.css">	
+		<style>
+			body{background: rgba(0,0,0,0);width: 1800px;height: 860px;}						
+		</style>
+	</head>
+	<body class="animated fadeIn" oncontextmenu="return false" onselectstart="return false" ondragstart="return false;" ondragend="return false;" onbeforecopy="return false" oncopy="document.selection.empty()" onselect="document.selection.empty()">		
+			<div class="panel">
+				<div class="swiper-container">
+					<div class="swiper-wrapper">
+						<div class="swiper-slide">
+							<img src="../../files/1/3千兆小区/伊旗/澳园.jpg">
+							<div class="p-box">
+								<p>伊旗澳园小区：位于民生路与益民路交叉口西南150米，可提供客户接入端口共计256个。</p>
+							</div>
+						</div>
+						<div class="swiper-slide">
+							<img src="../../files/1/3千兆小区/伊旗/城投玉园.jpg">
+							<div class="p-box">
+								<p>伊旗城投玉园小区：位于福泰街，可提供客户接入端口共计688个。</p>
+							</div>
+						</div>
+						<div class="swiper-slide">
+							<img src="../../files/1/3千兆小区/伊旗/淳园.jpg">
+							<div class="p-box">
+								<p>伊旗淳园小区：位于滨河大道南100米，可提供客户接入端口共计624个。</p>
+							</div>
+						</div>
+						<div class="swiper-slide">
+							<img src="../../files/1/3千兆小区/伊旗/涵园.jpg">
+							<div class="p-box">
+								<p>伊旗涵园小区：位于可汗街水岸新城涵园4号楼1801，可提供客户接入端口共计488个。</p>
+							</div>
+						</div>
+						<div class="swiper-slide">
+							<img src="../../files/1/3千兆小区/伊旗/灏园.jpg">
+							<div class="p-box">
+								<p>伊旗灏园小区：位于文明路与民生路交叉口西北150米，可提供客户接入端口共计400个。</p>
+							</div>
+						</div>
+						<div class="swiper-slide">
+							<img src="../../files/1/3千兆小区/伊旗/澜园.jpg">
+							<div class="p-box">
+								<p>伊旗澜园小区：位于越山路附近，可提供客户接入端口共计1120个。</p>
+							</div>
+						</div>
+						<div class="swiper-slide">
+							<img src="../../files/1/3千兆小区/伊旗/清园.jpg">
+							<div class="p-box">
+								<p>伊旗清园小区：位于文明路与爱民路交叉口东北150米，可提供客户接入端口共计336个。</p>
+							</div>
+						</div>
+						<div class="swiper-slide">
+							<img src="../../files/1/3千兆小区/伊旗/润园.jpg">
+							<div class="p-box">
+								<p>伊旗润园小区：位于滨河大道附件，可提供客户接入端口共计548个。</p>
+							</div>
+						</div>									
+					</div>
+				</div>
+				<div class="table-box">
+					<table class="table">
+						<thead>
+							<tr>
+								<th style="width: 80%;">小区名称</th>
+								<th >可接入用户</th>
+							</tr>						
+						</thead>
+					</table>
+					<div class="scroll">
+						<table class="table gudong">
+							<tbody>
+								<tr>
+								
+								</tr>
+								
+							</tbody>
+						</table>
+					</div>					
+				</div>				
+			</div>	
+
+		<script src="../../js/jquery-1.11.3.min.js"></script>
+		<script src="../../js/jquery.liMarquee.js"></script>
+		<script src="../../js/swiper.min.js"></script>
+		<script src="../../js/swiperEx.js"></script>
+		<script src="../../js/data.json"></script>
+		<script>
+			$(document).ready(function() {
+				createSwiper('.swiper-container', 8000, 300, true);
+				var rows = [];
+				$.each(data.yiqi,function(i,item){
+					rows.push('<tr><td>'+item.name+'</td><td>'+item.number+'</td></tr>')
+				})
+				$('.gudong tbody').empty().append(rows.join(''));
+				$('.scroll').liMarquee({
+					direction: "up",
+					scrollamount: 50,
+					runshort:false,
+					circular:false
+				})
+			});		
+		</script>
+	</body>
+</html>

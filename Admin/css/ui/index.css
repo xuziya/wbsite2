@@ -1,0 +1,86 @@
+.header-box{width:100%;height:80px;background:url(/Admin/img/header_bg.png) no-repeat;position:fixed;left:0;top:0;z-index:100;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;}
+/*.header-left{height:40px;margin-left:20px;}
+.header-left img{float:left;height:100%;margin-top:20px}*/
+.header-left{color:#ffffff;font-size:28px;font-weight:600;line-height:80px;margin-left:20px;}
+.header-left img{height:44px;margin-top:18px}
+/*页头*/
+.has-feedback{position:relative;margin-top:23px;margin-left:280px}
+.form-control-feedback{position:absolute;top:0;left:0px;z-index:2;display:block;width:34px;height:34px;line-height:34px;text-align:center;pointer-events:none;color:#9999;background:url(/Admin/img/ss.png) no-repeat center}
+.has-feedback input{position:absolute;top:0;left:0px;height:34px;width:260px;font-size:15px;padding-left:30px;border-radius:3px}
+::-webkit-input-placeholder{/*WebKit browsers*/color:#999}:-moz-placeholder{/*Mozilla Firefox 4 to 18*/color:#999}::-moz-placeholder{/*Mozilla Firefox 19+*/color:#999}:-ms-input-placeholder{/*Internet Explorer 10+*/color:#999}
+.header-right{margin-right:20px;margin-top:16px;float:right}
+.header-right li{float:left;font-size:13px;color:#ffffff;margin-left:12px}
+.header-right li a{color:#ffffff}
+.header-right li a:hover{color:#ffffff;border-bottom:1px solid;cursor:pointer}
+.header-right i{color:#ffffff;font-size:14px}
+.time{color:#ffffff;font-size:13px;text-align:right;margin-top:30px}
+
+/*一级菜单*/
+.navbar{height:100%;position:fixed;z-index:11;top:0px;left:-60px;height:100%;width:60px;box-shadow:1px 0 3px 0 rgba(0,0,0,0.2);-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}
+.navbar ul{margin-top:80px;background:#fff;border-right:1px solid #e0e0e0;height:100%}
+.navbar-one{height:60px}			
+.navbar-one a{display:block;height:60px;width:100%;background:#fff;transition:background .2s linear}			
+.navbar-one i{font-size:26px;color:#999;line-height:60px;width:60px;text-align:center;cursor:pointer}
+.navbar-one i:hover{color:#fff;background:#2982ce}/*{color:#2982ce}*/
+/*.navbar-one i:active{color:#fff;background:#2982ce}*/
+.arrow-box{width:11px;height:100%;background:transparent;position:absolute;left:60px;top:0;z-index:10}
+.arrow{width:11px;height:100px;background:#fff;position:absolute;left:0px;top:50%;margin-top:-50px;box-shadow:1px 0 3px 0 rgba(0,0,0,0.2);border-top:1px solid #e5e5e5;border-right:1px solid #e5e5e5;border-bottom:1px solid #e5e5e5;border-radius:0 5px 5px 0 }
+.navbar .arrow i{font-size:11px;font-weight:bold;width:11px;text-align:center;line-height:100px;color:#2982ce }
+
+/*二级菜单*/
+.navbar-two{width:200px;height:100%;position:fixed;left:0;top:0;border-right:2px solid #e0e0e0;background:#fff;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;overflow: hidden;}
+.sidebar-menu,.header-menu>*,.sidebar-dropdown>*{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}
+.sidebar-menu .active>a{color:#333;border-right:4px solid #2982ce}		
+.header-menu{border-bottom:1px solid #e5e5e5;height:50px;font-size:16px;font-weight:bolder;color:#333;text-align:left;padding-left:20px}
+.header-menu i{font-size:22px;color:#2982ce;width:25px;text-align:center;line-height:49px}
+.sidebar-dropdown{background:#fff;border-bottom:1px solid #e5e5e5}	
+.sidebar-dropdown>a{font-size:14px;display:inline-block;width:200px;height:42px;color:#666;text-decoration:none;position:relative;line-height:42px;padding-left:20px;border-right:4px solid transparent;transition:all .2s linear}
+.sidebar-dropdown>a:hover{color:#333;border-right:4px solid #2982ce}
+.sidebar-dropdown>a:active{color:#333;border-right:4px solid #2982ce}
+.sidebar-dropdown>a:focus{color:#333;border-right:4px solid #2982ce}
+/*.rotate{transform:rotate(180deg)}*/
+.sidebar-dropdown i{position:absolute;right:10px;top:15px;transition:all 0.3s}
+.sidebar-submenu{display:none ;background:#f4f2ef}
+.sidebar-submenu ul{padding:8px 0}
+.sidebar-submenu a{display:inline-block;font-size:14px;text-decoration:none;width:200px;padding:5px 0 5px 25px;transition:all .2s linear}
+.sidebar-submenu a:hover{background:#a7ccec;color:#fff}
+.sidebar-submenu a:active{background:#2982ce;color:#fff}
+.sidebar-submenu a:focus{background:#2982ce;color:#fff}
+
+/*主内容*/	 			
+.container-box{position:absolute;left:200px;right:0;top:80px;bottom:0;z-index:998;width:auto;overflow:hidden;overflow-y:auto;box-sizing:border-box}
+.admin-body{position:absolute;top:0;bottom:0;left:0;right:0;overflow:hidden}
+.admin-iframe{position:absolute;width:100%;height:100%;left:0;top:0;right:0;bottom:0}
+.card-left1{height:382px}
+.list li{border-left:4px solid #fff ;padding:10px 15px 8px 15px;border-bottom:1px dashed #E6E6E6}
+.list li:hover{border-left:4px solid #fea929;background:#f2f2f2}
+.list li:focus{border-left:4px solid #fea929;background:#f2f2f2}
+.list li p{color:#555;margin-bottom:2px }			
+.list-small{float:left;color:#999}
+.list .more{float:right;color:#D2D2D2;font-size:15px}
+.row-bg{background:#f2f2f2}
+.row-bg p{padding:12px 10px;margin:0;color:#999}
+.row-bg h2{padding:11px 0 11px 11px;margin:0;color:#2982ce;float:left}
+.row-bg a{float:right;padding:20px 15px 10px 15px;color:#666}
+.row-bg a:hover{color:#2982ce;text-decoration:underline}
+
+/*用户名*/
+.user{overflow:hidden}
+.user-img{width:117px;height:117px;margin:10px auto auto auto}
+.user h5{margin:15px 0;font-size:16px ;font-weight:500;color:#333;line-height:16px}
+.user ul{display:block;margin:0 auto;position:relative;left:50%;margin-left:-100px;overflow:hidden;margin-bottom:10px}
+.user .btn{margin:0 10px}
+.user dt{font-weight:normal;color:#999;font-size:14px}
+.user dd{font-size:14px}
+@media(max-width:1290px)
+{
+	.navbar-two,.sidebar-dropdown>a{width:180px}
+	.sidebar-submenu a{width:155px}
+	.container-box{left:180px}
+}
+.dl-horizontal dt{float:left;;clear:left;text-align:right;text-overflow:ellipsis;white-space:nowrap;width:150px;}.dl-horizontal dd{margin-left:160px}
+@media (max-width:1920px){.dl-horizontal dt{width:300px;}.dl-horizontal dd{margin-left:310px}}
+@media (max-width:1600px){.dl-horizontal dt{width:200px;}.dl-horizontal dd{margin-left:210px}}
+@media (max-width:1290px){.dl-horizontal dt{width:140px;}.dl-horizontal dd{margin-left:150px}}
+
+

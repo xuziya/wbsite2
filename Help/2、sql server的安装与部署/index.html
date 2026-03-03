@@ -1,0 +1,116 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>2、sql server的安装与部署</title>
+    <style type="text/css">
+        *{margin:0;padding:0}
+        body{padding:0 100px}
+        a{color:#333}
+        hr{color:#ccc}
+        ul{list-style:none}
+        ul li{margin:7px}
+        
+        h1{width:100%;text-align:center;margin:10px 30px;padding:20px;border-bottom:1px solid #bbb}
+        h2{margin:20px 0px}
+        h3{margin:20px 30px}
+        h4{margin:20px 60px;font-weight:normal}
+        h5{margin:20px 90px;font-weight:normal}
+    </style>
+</head>
+<body>
+    <!--标题-->
+    <h1>sql server的安装与部署</h1>
+
+    <!--目录-->
+    <ul>
+        <li><h2>目录：</h2></li>
+        <li>一、<a href="#menu1">安装sql server</a></li>
+        <li>二、<a href="#menu2">配置sql server</a></li>
+        <li>三、<a href="#menu3">可能遇到的问题</a></li>
+    </ul>
+
+    <!--正文-->
+    <h2>正文：</h2>
+    <!--一、安装sql server-->
+    <h2 id="menu1">一、安装sql server</h2>
+    <div>
+        <h3>1、双击下载好的安装文件setup.exe（注意：安装之前请确认是否有安装SQL Server 2008 R2需要的.NET Framework 3.5 SP1）：</h3><div><h4><img src="img/1%20安装1.jpg" /></h4></div>
+        <h3>2、弹出sql server安装中心界面，点击左侧栏目“安装”：</h3><div><h4><img src="img/1%20安装2.jpg" /></h4></div>
+        <h3>3、点击右边栏目的“全新安装或向现有安装添加功能”：</h3><div><h4><img src="img/1%20安装3.jpg" /></h4></div>
+        <h3>4、“安装程序正在处理当前操作，请稍后”等一会，下面安装过程中很多次都弹出sql server安装中心主界面可以不用管：</h3><div><h4><img src="img/1%20安装4.jpg" /></h4></div>
+        <h3>5、然后会弹出一个会话框“安装程序支持规则”，检查正常，点击确定：</h3><div><h4><img src="img/1%20安装5.jpg" /></h4></div>
+        <h3>6、选择输入产品密钥，并输入密钥（JD8Y6-HQG69-P9H84-XDTPG-34MBB），点击下一步：</h3><div><h4><img src="img/1%20安装6.jpg" /></h4></div>
+        <h3>7、勾选：我接受许可条款，并点击下一步：</h3><div><h4><img src="img/1%20安装7.jpg" /></h4></div>
+        <h3>8、点击安装：</h3><div><h4><img src="img/1%20安装8 1.jpg" /></h4><h4><img src="img/1%20安装8 2.jpg" /></h4></div>
+        <h3>9、点击下一步：</h3><div><h4><img src="img/1%20安装9.jpg" /></h4></div>
+        <h3>10、选中默认：sql  server 功能安装，并点击下一步：</h3><div><h4><img src="img/1%20安装10.jpg" /></h4></div>
+        <h3>11、功能选择：点击全选按钮，（共享功能目录看个人意愿是否需要修改到其他盘）并点击下一步：</h3><div><h4><img src="img/1%20安装11.jpg" /></h4></div>
+        <h3>12、等个1分钟左右：</h3><div><h4><img src="img/1%20安装12.jpg" /></h4></div>
+        <h3>13、点击下一步：</h3><div><h4><img src="img/1%20安装13.jpg" /></h4></div>
+        <h3>14、实例配置，如果目录需要修改可以更改下其他路径，然后点击下一步：</h3><div><h4><img src="img/1%20安装14.jpg" /></h4></div>
+        <h3>15、点击下一步：</h3><div><h4><img src="img/1%20安装15.jpg" /></h4></div>
+        <h3>16、如图修改下账户名，然后点击下一步：</h3><div><h4><img src="img/1%20安装16.jpg" /></h4></div>
+        <h3>17、账户设置：选择混合模式，输入密码和确认密码；点击下方：添加当前用户：</h3><div><h4><img src="img/1%20安装17.jpg" /></h4></div>
+        <h3>18、数据目录，默认保存在c盘，建议修改保存目标路径，点击下一步：</h3><div><h4><img src="img/1%20安装18.jpg" /></h4></div>
+        <h3>19、点击下一步：</h3><div><h4><img src="img/1%20安装19.jpg" /></h4></div>
+        <h3>20、点击下一步：</h3><div><h4><img src="img/1%20安装20.jpg" /></h4></div>
+        <h3>21、点击下一步：</h3><div><h4><img src="img/1%20安装21.jpg" /></h4></div>
+        <h3>22、点击安装：</h3><div><h4><img src="img/1%20安装22.jpg" /></h4></div>
+        <h3>23、正在安装中：</h3><div><h4><img src="img/1%20安装23.jpg" /></h4></div>
+        <h3>24、安装完成，点关闭：</h3><div><h4><img src="img/1%20安装24.jpg" /></h4></div>
+        <h3>25、至此安装完成，在Windows开始菜单中，打开数据库管理工具就可以使用了。</h3>
+    </div>
+    
+    <!--二、配置sql server-->
+    <h2 id="menu2">二、配置sql server</h2>
+    <div>
+        <h3>1、在任务栏开始菜单——程序——Microsoft SQL Server 2008——配置工具——打开“SQL Server 配置管理器”：</h3>
+        <div>
+            <h4></h4>
+            <h4></h4>
+        </div>
+        <h3>2、SQL Server 服务：
+            启动模式均设为自动
+            状态均为正在运行
+            登录身份：本地帐户——管理员账户、密码——启动——确定
+        </h3>
+        <div>
+            <h4><img src="img/2.2%20配置1.jpg" /></h4>
+            <h4><img src="img/2.2%20配置2.jpg" /></h4>
+            <h4><img src="img/2.2%20配置3.jpg" /></h4>
+        </div>
+        <h3>3、设置完成：</h3>
+        <div><h4><img src="img/2.3%20完成.jpg" /></h4></div>
+        <h3>4、在任务栏开始菜单——程序——SQL Server Management Studio，进行SSMS 设置：</h3>
+        <h3>5、打开后以“windows身份验证”登录。</h3>
+        <h3>6、在账户名上右键——属性 新弹出对话框“安全性”，设置如图 确定：</h3>
+        <div><h4><img src="img/2.6%20安全性.jpg" /></h4></div>
+        <h3>7、安全性—登录名—sa—sql身份验证，键入sa密码（建议与管理员密码相同），如图设置 确定：</h3>
+        <div><h4><img src="img/2.7%20密码.jpg" /></h4></div>
+        <h3>8、账户名上右键——重新启动：</h3>
+        <div><h4><img src="img/2.8%20重启.jpg" /></h4></div>
+    </div>
+
+    <!--三、可能遇到的问题-->
+    <h2 id="menu3">三、可能遇到的问题</h2>
+    <div>
+        <h3>1、当安装sql server2008出现了出现规则性能计数器注册表配置单元一致性失败：</h3><div><h4>这是由于注册表HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Perflib]中文件信息不全所以执行exctrlst_setup.exe 这个文件，补全注册表的信息这个文件可以到网上去下载</h4><h4><img src="img/3.1%20问题.jpg" /></h4></div>
+        <h3>2、账号验证错误</h3><div><h4>这是在对所有sql server服务提供相同的用户的选项中选择NT AUTHORITY\SYSTEM sql server2008账户设置时出现密码不匹配 。自动生成添加账户，然后输入开机时的密码</h4><h4><img src="img/3.2%20问题.jpg" /></h4></div>
+        <h3>3、安装好数据库后，有时候发现第一次登陆时，难免会很难登陆成功，就会出现下面图中的错误：</h3><div><h4>这时应启动配置工具中的配置管理器将SQLEXPRESS协议中的Named Pipes和 TCP/IP启用,然后再点击SQL Server服务，将SQL Server(MSSQLEXPRESS)重新启动。之后=就可以连接了</h4><h4><img src="img/3.3%20问题1.jpg" /></h4><h4><img src="img/3.3%20问题2.jpg" /></h4><h4><img src="img/3.3%20问题3.jpg" /></h4></div>
+        <h3>4、提示文件（操作）已经挂起</h3><div><h4>删除\HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\下的PendingFileRenameOperations键值</h4></div>
+        <h3>5、卸载sql server</h3>
+        <div>
+            <h4>
+                （1）找到控制面板-->卸载程序-->程序和功能，把SQL Server开头的所有的程序都卸载干净。<br />
+                （2）找到SQL Server2008以前的安装目录也一并永久删除（回收站也删除干净）。<br />
+                （3）用杀毒软件清理注册表以及删除痕迹。<br />
+                （4）杀毒软件并没有完全删除，进入C盘将Microsoft SQL Server文件夹删除（一般情况是 有东西不能删除，因为有一些是开机就直接运行的进程，直接用文件粉碎机，），该文件夹默认在Program Files中 还有一个实例存放的文件夹，如果自己记得也一起删掉。<br />
+                （5）删除注册表信息  进入命令提示符运行->regedit出现对话框，地址：HKTY_CURRENT_USER->Software->Microsoft->Microsoft SQL Server（可能有多个，全部删掉）  HKTY_LOCAL_MACHINE->SOFTWARE->Microsoft->Microsoft SQL Server XXX(有很多个，全部删掉)。<br />
+                （6）重新启动电脑。<br />
+            </h4>
+        </div>
+    </div>
+
+</body>
+</html>

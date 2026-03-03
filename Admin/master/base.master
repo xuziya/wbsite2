@@ -1,0 +1,66 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="base.master.cs" Inherits="Master_base" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head id="head1" runat="server">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+	<title>游戏培训系统</title>
+    <!--HTML5 shim 和 respond.js 是为了让 IE8 支持 HTML5 元素和媒体查询（media queries）功能-->
+    <!--警告：通过 file:// 协议（就是直接将 html 页面拖拽到浏览器中）访问页面时 Respond.js 不起作用-->
+    <!--[if lt IE 9]>
+      <script src="/Admin/js/html5/html5shiv.min.js"></script>
+      <script src="/Admin/js/html5/respond.min.js"></script> 
+    <![endif]-->
+	<link type="text/css" rel="stylesheet" href="/Admin/css/ui/base.css"/>
+
+    <link type="text/css" rel="stylesheet" href="/Tools/layui/iframe/dist/layuiadmin/layui/css/layui.css"/><%--layui--%>
+    <script type="text/javascript" src="/Tools/layui/iframe/dist/layuiadmin/layui/layui.all.js"></script><%--layui--%>
+    <script type="text/javascript" src="/Admin/js/jquery/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="/Admin/js/jquery/jquery.placeholder.min.js"></script>
+    <script type="text/javascript">
+        var activeWindow = null;
+        /*打开窗口*/
+        function openWindows(obj, url, title, width, height, maxmin)
+        {
+            if (url.substr(0, 7) != "/Upload")
+            {
+                if (obj && obj != null) { activeWindow = obj; } /*当前活动窗口*/
+                if (url.substr(0, 1) != "/") { url = "/Admin/pages/" + url; } /*非内页*/
+                if ($(window).width() <= 1440) { width = 1200; height = 742; } /*1024*768=1024*692*/
+                else { width = 1400; height = 742; }
+                layer.open({ type: 2, area: [(width || 1000) + "px", (height || 660) + "px"], fixed: false, maxmin: maxmin || false, content: url, title: title || "学员管理" });
+            }
+        }
+        /*打开等待页*/
+        function openLoading() { layer.load(2); }
+        /*关闭等待页*/
+        function closeLoading() { layer.closeAll('loading'); }
+        /*消息框*/
+        function messageBox(msg) { layer.alert(msg); }
+        /*内页table刷新*/
+        function reloadTable() { if (activeWindow) { activeWindow.uploadTableList(); } }
+        /*内页tree刷新*/
+        function plan_addNode(text, value, index) { if (activeWindow) { activeWindow.plan_addNode(text, value, index); } }
+        function plan_updateNode(text, value, index) { if (activeWindow) { activeWindow.plan_updateNode(text, value, index); } }
+    </script>
+
+    <asp:ContentPlaceHolder id="head" runat="server"></asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <asp:ContentPlaceHolder id="body" runat="server">
+        
+        </asp:ContentPlaceHolder>
+    </form>
+    <script type="text/javascript">
+        $(document).ready(function ()
+        {
+            document.oncontextmenu = function () { return false; }
+            document.onselectstart = function () { return false; }
+            document.oncopy = function () { return false; }
+        });
+    </script>
+</body>
+</html>

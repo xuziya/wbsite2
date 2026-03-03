@@ -1,0 +1,36 @@
+﻿using System;
+using System.Data;
+using harry.DAL.Sql.Sql2008;
+using harry.Tools;
+
+public partial class Admin_setting_system : AdminBasePage
+{
+    protected override void Page_Load(object sender, EventArgs e)
+    {
+        base.Page_Load(sender, e);
+        if (!IsPostBack)
+        {
+            DataTable dt = skin.GetDT("select top 1 * from [admin_setting] where type='系统设置' and name='系统设置'");
+            if (dt.Rows.Count > 0)
+            {
+                //operType.Value = dt.Rows[0]["v4"].ToString();
+            }
+        }
+    }
+
+    protected void Button1_Click(object sender, EventArgs e)
+    {
+        if (FileUpload1.HasFile && FileUpload1.PostedFile.FileName.IndexOf(".png") == -1) { this.Alert("网页logo为png类型图片，尺寸32 x 32"); return; }
+        if (FileUpload2.HasFile && FileUpload2.PostedFile.FileName.IndexOf(".png") == -1) { this.Alert("系统logo为png类型图片，尺寸220 x 70"); return; }
+        if (FileUpload3.HasFile && FileUpload3.PostedFile.FileName.IndexOf(".png") == -1) { this.Alert("登录logo为png类型图片，尺寸512 x 512"); return; }
+
+        //bool result = skin.ExecuteSql("update [admin_setting] set v4='" + v4.SelectedItem.Value + "' where type='系统设置' and name='系统设置'") > 0;
+        //if (result)
+        //{
+        //    if (FileUpload1.HasFile) { FileUpload1.SaveAs(Server.MapPath("~/Upload/init/favicon.png")); }
+        //    if (FileUpload2.HasFile) { FileUpload2.SaveAs(Server.MapPath("~/Upload/init/logo1.png")); }
+        //    if (FileUpload3.HasFile) { FileUpload3.SaveAs(Server.MapPath("~/Upload/init/logo2.png")); }
+        //}
+        //this.Alert(result);
+    }
+}

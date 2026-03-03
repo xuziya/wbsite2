@@ -1,0 +1,11 @@
+﻿
+/****    jquery扩展方法  ****/
+(function ($)
+{
+    $.getUrlParam = function (name)
+    {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        return r != null ? unescape(r[2]) : null;
+    }
+})(jQuery);

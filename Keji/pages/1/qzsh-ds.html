@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html style="touch-action: none;">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0" />
+		<title></title>
+		<link rel="stylesheet" href="../../css/normalize.css">
+		<link rel="stylesheet" href="../../css/animate.min.css">
+		<link rel="stylesheet" href="../../css/swiper.min.css">
+		<link rel="stylesheet" href="../../css/liMarquee.css">
+		<link rel="stylesheet" href="../../css/base.css">	
+		<link rel="stylesheet" href="../../css/style.css">	
+		<style>
+			body{background: rgba(0,0,0,0);width: 1800px;height: 860px;}						
+		</style>
+	</head>
+	<body class="animated fadeIn" oncontextmenu="return false" onselectstart="return false" ondragstart="return false;" ondragend="return false;" onbeforecopy="return false" oncopy="document.selection.empty()" onselect="document.selection.empty()">		
+			<div class="panel">
+				<div class="swiper-container">
+					<div class="swiper-wrapper">
+						<div class="swiper-slide">
+							<img src="../../files/1/3千兆小区/东胜/白领瑞嘉小区.jpg">
+							<div class="p-box">
+								<p>东胜白领瑞嘉小区：位于居然之家东侧，可提供客户接入端口共计304个。</p>
+							</div>
+						</div>
+						<div class="swiper-slide">
+							<img src="../../files/1/3千兆小区/东胜/大磊馨视界小区.jpg">
+							<div class="p-box">
+								<p>东胜大磊馨视界小区：位于天骄南路近纺织西街，可提供客户接入端口共计696个。</p>
+							</div>
+						</div>						
+						<div class="swiper-slide">
+							<img src="../../files/1/3千兆小区/东胜/天润城市广场小区.jpg">
+							<div class="p-box">
+								<p>东胜天润城市广场小区：位于伊金霍洛东街与实验小学西巷交汇处西南，可提供客户接入端口共计244个。</p>
+							</div>
+						</div>	
+						<div class="swiper-slide">
+							<img src="../../files/1/3千兆小区/东胜/炜业弘都小区.jpg">
+							<div class="p-box">
+								<p>	东胜炜业弘都小区：位于富兴街道，可提供客户接入端口共计144个。</p>
+							</div>
+						</div>
+						<div class="swiper-slide">
+							<img src="../../files/1/3千兆小区/东胜/东都花园小区.jpg">
+							<div class="p-box">
+								<p>东胜东都花园小区：位于那日松北路，可提供客户接入端口共计200个。</p>
+							</div>
+						</div>
+						<div class="swiper-slide">
+							<img src="../../files/1/3千兆小区/东胜/锦厦万家园小区.jpg">
+							<div class="p-box">
+								<p>东胜锦厦万家园小区：位于富兴北路与鄂尔多斯东街交汇处附近北，可提供客户接入端口共计372个。</p>
+							</div>
+						</div>	
+						<div class="swiper-slide">
+							<img src="../../files/1/3千兆小区/东胜/大磊馨视界小区.jpg">
+							<div class="p-box">
+								<p>东胜金和丽城小区：位于沃热南路西150米，可提供客户接入端口共计304个。</p>
+							</div>
+						</div>	
+						<div class="swiper-slide">
+							<img src="../../files/1/3千兆小区/东胜/汇昇小区.jpg">
+							<div class="p-box">
+								<p>东胜汇昇小区：位于金水源酒店附近，可提供客户接入端口共计280个。</p>
+							</div>
+						</div>	
+						<div class="swiper-slide">
+							<img src="../../files/1/3千兆小区/东胜/温馨花园二期小区.jpg">
+							<div class="p-box">
+								<p>东胜温馨花园二期小区：位于那日松南路3号，可提供客户接入端口共计184个。</p>
+							</div>
+						</div>
+						<div class="swiper-slide">
+							<img src="../../files/1/3千兆小区/东胜/家和天下小区.jpg">
+							<div class="p-box">
+								<p>东胜家和天下小区：位于鄂尔多斯东街与沃热南路交叉口东南420米，可提供客户接入端口共计208个。</p>
+							</div>
+						</div>	
+					</div>
+				</div>
+				<div class="table-box">
+					<table class="table">
+						<thead>
+							<tr>
+								<th style="width: 80%;">小区名称</th>
+								<th >可接入用户</th>
+							</tr>						
+						</thead>
+					</table>
+					<div class="scroll">
+						<table class="table gudong">
+							<tbody>
+								<tr>
+									
+								</tr>
+								
+							</tbody>
+						</table>
+					</div>					
+				</div>				
+			</div>	
+
+		<script src="../../js/jquery-1.11.3.min.js"></script>
+		<script src="../../js/jquery.liMarquee.js"></script>
+		<script src="../../js/swiper.min.js"></script>
+		<script src="../../js/swiperEx.js"></script>
+		<script src="../../js/data.json"></script>
+		<!-- <script src="../../js/common.js"></script> -->
+		<script>
+			$(document).ready(function() {
+				createSwiper('.swiper-container', 8000, 300, true);
+				var rows = [];
+				$.each(data.dongsheng,function(i,item){
+					rows.push('<tr><td>'+item.name+'</td><td>'+item.number+'</td></tr>')
+				})
+				$('.gudong tbody').empty().append(rows.join(''));
+				$('.scroll').liMarquee({
+					direction: "up",
+					scrollamount: 50,
+					runshort:false,
+					circular:false
+				})
+			});
+		</script>
+	</body>
+</html>

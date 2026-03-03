@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html style="touch-action: none;">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0" />
+		<title></title>
+		<link rel="stylesheet" href="../../css/normalize.css">
+		<link rel="stylesheet" href="../../css/animate.min.css">
+		<link rel="stylesheet" href="../../css/swiper.min.css">
+		<link rel="stylesheet" href="../../css/liMarquee.css">
+		<link rel="stylesheet" href="../../css/base.css">	
+		<link rel="stylesheet" href="../../css/style.css">	
+		<style>
+			body{background: rgba(0,0,0,0);width: 1800px;height: 860px;}						
+		</style>
+	</head>
+	<body class="animated fadeIn" oncontextmenu="return false" onselectstart="return false" ondragstart="return false;" ondragend="return false;" onbeforecopy="return false" oncopy="document.selection.empty()" onselect="document.selection.empty()">		
+			<div class="panel">
+				<div class="swiper-container">
+					<div class="swiper-wrapper">						
+						<div class="swiper-slide">
+							<img src="../../files/1/3千兆小区/棋盘井/和泰家苑.jpg">
+							<div class="p-box">
+								<p>棋盘井和泰家苑小区：位于苏力迪街，可提供客户接入端口共计316个。</p>
+							</div>
+						</div>
+						<div class="swiper-slide">
+							<img src="../../files/1/3千兆小区/棋盘井/棋祥精品园.jpg">
+							<div class="p-box">
+								<p>棋盘井棋祥小区：位于鑫通街宏达住宅A区，可提供客户接入端口共计696个。</p>
+							</div>
+						</div>	
+						<div class="swiper-slide">
+							<img src="../../files/1/3千兆小区/棋盘井/西苑家园.jpg">
+							<div class="p-box">
+								<p>棋盘井西苑二期小区：位于天骄路，可提供客户接入端口共计268个。</p>
+							</div>
+						</div>	
+						<div class="swiper-slide">
+							<img src="../../files/1/3千兆小区/棋盘井/御景.jpg">
+							<div class="p-box">
+								<p>棋盘井御景园小区：位于平安路与阿尔寨街交叉口东南100米，可提供客户接入端口共计870个。</p>
+							</div>
+						</div>	
+						<div class="swiper-slide">
+							<img src="../../files/1/3千兆小区/棋盘井/长城佳苑.jpg">
+							<div class="p-box">
+								<p>棋盘井长城佳苑小区：位于第八幼儿园西南侧约240米，可提供客户接入端口共计176个。</p>
+							</div>
+						</div>							
+					</div>
+				</div>
+				<div class="table-box">
+					<table class="table">
+						<thead>
+							<tr>
+								<th style="width: 80%;">小区名称</th>
+								<th >可接入用户</th>
+							</tr>						
+						</thead>
+					</table>
+					<div class="scroll">
+						<table class="table gudong">
+							<tbody>
+								<tr>
+									
+								</tr>
+								
+							</tbody>
+						</table>
+					</div>					
+				</div>				
+			</div>	
+
+		<script src="../../js/jquery-1.11.3.min.js"></script>
+		<script src="../../js/jquery.liMarquee.js"></script>
+		<script src="../../js/swiper.min.js"></script>
+		<script src="../../js/swiperEx.js"></script>
+		<script src="../../js/data.json"></script>
+		<script>
+			$(document).ready(function() {
+				createSwiper('.swiper-container', 8000, 300, true);
+				var rows = [];
+				$.each(data.qipanjing,function(i,item){
+					rows.push('<tr><td>'+item.name+'</td><td>'+item.number+'</td></tr>')
+				})
+				$('.gudong tbody').empty().append(rows.join(''));
+				$('.scroll').liMarquee({
+					direction: "up",
+					scrollamount: 50,
+					runshort:false,
+					circular:false
+				})
+			});
+			
+			
+		</script>
+	</body>
+</html>

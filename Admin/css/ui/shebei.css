@@ -1,0 +1,11 @@
+.device{border: 1px solid #d9d9d9;min-width: 330px;}
+.device-left{float: left;width:calc(30% - 20px);padding: 10px;}
+.device-left img{display: block;margin: 0 auto;width: auto;}
+.device-left-d{margin-top: 15px;}
+.device-left-d p{text-align: left;line-height: 14px;}
+.device-left-d span{float: left;margin:0 10px 0 20px;}
+.device-right{float: right;width: calc(70% - 20px);padding: 10px;}
+.device-right dl{margin: 0 auto;}
+.device-right dd{font-size: 13px;color: #666;}
+.device-right-d{margin:5px 0;}
+.device-right-d .btn{margin-right: 5px;}

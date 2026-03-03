@@ -1,0 +1,12 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Admin/master/form.master" CodeFile="1login_export.aspx.cs" Inherits="Admin_pages__sys_log_1login_export" %>
+<asp:Content ID="Content2" ContentPlaceHolderID="body" Runat="Server">
+    <div class="t_head"><div class="t_title"><div class="t_path left">日志管理 - 系统日志 - 登陆日志 - <a>日志导出</a></div><div class="clear"></div></div></div>
+    <table cellspacing="0" cellpadding="0" class="addDataTable" style="border:1px solid #e0e0e0;border-bottom:0px">
+        <tr>
+            <td style="padding:20px 200px">
+                <div class="whiteBotton"><asp:Button ID="Button1" runat="server" Text="确认导出" onclick="Button1_Click" /></div>
+                <div class="whiteBotton" onclick="location.href=location.href">重   置</div>
+            </td>
+        </tr>
+    </table>
+</asp:Content>

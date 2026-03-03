@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html style="touch-action: none;">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0" />
+		<title></title>
+		<link rel="stylesheet" href="../../css/normalize.css">
+		<link rel="stylesheet" href="../../css/animate.min.css">
+		<link rel="stylesheet" href="../../css/swiper.min.css">
+		<link rel="stylesheet" href="../../css/liMarquee.css">
+		<link rel="stylesheet" href="../../css/base.css">	
+		<link rel="stylesheet" href="../../css/style.css">	
+		<style>
+			body{background: rgba(0,0,0,0);width: 1800px;height: 860px;}						
+		</style>
+	</head>
+	<body class="animated fadeIn" oncontextmenu="return false" onselectstart="return false" ondragstart="return false;" ondragend="return false;" onbeforecopy="return false" oncopy="document.selection.empty()" onselect="document.selection.empty()">		
+			<div class="panel">
+				<div class="swiper-container">
+					<div class="swiper-wrapper">
+						<div class="swiper-slide">
+							<img src="../../files/1/3千兆小区/前旗/安泰家园.jpg">
+							<div class="p-box">
+								<p>鄂前旗安泰小区：位于城川南路与其巴嘎图西街交汇处东北，可提供客户接入端口共计100个。</p>
+							</div>
+						</div>
+						<div class="swiper-slide">
+							<img src="../../files/1/3千兆小区/前旗/都市华庭.jpg">
+							<div class="p-box">
+								<p>鄂前旗都市华庭小区：位于上海庙北路，可提供客户接入端口共计192个。</p>
+							</div>
+						</div>
+						<div class="swiper-slide">
+							<img src="../../files/1/3千兆小区/前旗/和泰家园.jpg">
+							<div class="p-box">
+								<p>鄂前旗和泰家园小区：位于苏力迪街，可提供客户接入端口共计1020个。</p>
+							</div>
+						</div>
+						<div class="swiper-slide">
+							<img src="../../files/1/3千兆小区/前旗/和效家园.jpg">
+							<div class="p-box">
+								<p>鄂前旗和效家园小区：位于苏力迪西街，可提供客户接入端口共计276个。</p>
+							</div>
+						</div>
+						<div class="swiper-slide">
+							<img src="../../files/1/3千兆小区/前旗/锦绣丽岛小区.jpg">
+							<div class="p-box">
+								<p>鄂前旗锦绣丽岛小区：位于毛盖图西街与新区大街交叉路口往西南约300米，可提供客户接入端口共计782个。</p>
+							</div>
+						</div>
+						<div class="swiper-slide">
+							<img src="../../files/1/3千兆小区/前旗/盛泰骏城.jpg">
+							<div class="p-box">
+								<p>鄂前旗盛泰骏城小区：位于二道川路与玛拉迪西街交汇处附近北，可提供客户接入端口共计324个。</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="table-box">
+					<table class="table">
+						<thead>
+							<tr>
+								<th style="width: 80%;">小区名称</th>
+								<th >可接入用户</th>
+							</tr>						
+						</thead>
+					</table>
+					<div class="scroll">
+						<table class="table gudong">
+							<tbody>
+								<tr>
+									
+								</tr>
+								
+							</tbody>
+						</table>
+					</div>					
+				</div>				
+			</div>	
+
+		<script src="../../js/jquery-1.11.3.min.js"></script>
+		<script src="../../js/jquery.liMarquee.js"></script>
+		<script src="../../js/swiper.min.js"></script>
+		<script src="../../js/swiperEx.js"></script>
+		<script src="../../js/data.json"></script>
+		<script>
+			$(document).ready(function() {
+				createSwiper('.swiper-container', 8000, 300, true);
+				var rows = [];
+				$.each(data.eqianqi,function(i,item){
+					rows.push('<tr><td>'+item.name+'</td><td>'+item.number+'</td></tr>')
+				})
+				$('.gudong tbody').empty().append(rows.join(''));
+				$('.scroll').liMarquee({
+					direction: "up",
+					scrollamount: 50,
+					runshort:false,
+					circular:false
+				})
+			});
+			
+			
+		</script>
+	</body>
+</html>

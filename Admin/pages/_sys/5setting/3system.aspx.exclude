@@ -1,0 +1,44 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Admin/master/form.master" CodeFile="3system.aspx.cs" Inherits="Admin_setting_system" %>
+
+<asp:Content ID="Content2" ContentPlaceHolderID="body" Runat="Server">
+    <%=GetPath() %>
+    <div style="height:40px"></div>
+	<div class="container-fluid">
+        <table class="table table-bordered table-hover">
+            <tr>
+                <th width="170">网页logo<span class="form-red">*</span><br /><span class="form-tip">png类型图片，尺寸32 x 32</span></th>
+                <td>
+                    <asp:FileUpload ID="FileUpload1" runat="server" class="form-input"/>
+                    <img id="v1" src="/Upload/init/favicon.ico" alt=""/>
+                </td>
+            </tr>
+            <tr>
+                <th>系统logo<span class="form-red">*</span><br /><span class="form-tip">png类型图片，尺寸220 x 70</span></th>
+                <td>
+                    <asp:FileUpload ID="FileUpload2" runat="server" class="form-input"/>
+                    <img id="v2" src="/Upload/init/logo1.png" alt=""/>
+                </td>
+            </tr>
+            <tr>
+                <th>登录logo<span class="form-red">*</span><br /><span class="form-tip">png类型图片，尺寸512 x 512</span></th>
+                <td>
+                    <asp:FileUpload ID="FileUpload3" runat="server" class="form-input"/>
+                    <div style="width:100px;margin-top:10px"><img id="Img1" src="/Upload/init/logo2.png" style="width:100%" alt=""/></div>
+                </td>
+            </tr>
+            <tr>
+                <th>系统打开方式<span class="form-red">*</span><br /><span class="form-tip">系统的操作方式</span></th>
+                <td id="operTypes" onclick="setLayuiRadio(event)">
+                    <label><input type="radio" name="v4" value="1" class="form-radio"/> 窗体模式</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <label><input type="radio" name="v4" value="2" class="form-radio" checked="checked"/> 菜单模式</label>
+                </td>
+            </tr>
+            <tr>
+                <td style="padding:20px 200px" colspan="2">
+                    <asp:Button id="Button1" runat="server" class="btn btn-primary" Text="确&nbsp;&nbsp;认" OnClick="Button1_Click"/>
+                    <button class="btn btn-primary" onclick="location.href=location.href">刷&nbsp;&nbsp;新</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+</asp:Content>

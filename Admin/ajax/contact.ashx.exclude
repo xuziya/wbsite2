@@ -1,0 +1,31 @@
+﻿<%@ WebHandler Language="C#" Class="ajax_contact" %>
+
+using System;
+using System.Web;
+using System.Text;
+using harry.DAL.Sql.Sql2008;
+
+public class ajax_contact : IHttpHandler
+{
+    public void ProcessRequest(HttpContext context)
+    {
+        StringBuilder write = new StringBuilder();
+        HttpRequest request = HttpContext.Current.Request;
+        HttpResponse response = HttpContext.Current.Response;
+        try
+        {
+            string name = request["name"] ?? "";
+            string mobile = request["mobile"] ?? "";
+            string address = request["address"] ?? "";
+            string email = request["email"] ?? "";
+            string content = request["content"] ?? "";
+            write.Append(skin.ExecuteSql("insert into [client_contact] values('" + harry.Tools.Common.GetSole() + "','','" + name + "','" + mobile + "','" + address + "','" + email + "','" + content + "',1,'','" + BasePage.GetDateTime() + "','');").ToString());
+        }
+        catch { throw; }
+        response.ContentType = "text/plain";
+        response.Write(write.ToString());
+        response.End();
+    }
+
+    public bool IsReusable { get { return false; } }
+}

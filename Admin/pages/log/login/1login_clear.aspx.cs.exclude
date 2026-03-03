@@ -1,0 +1,45 @@
+﻿using System;
+using System.Data;
+using System.Text;
+using harry.DAL.Sql.Sql2008;
+using harry.Tools;
+
+public partial class Admin_pages__sys_log_1login_clear : AdminBasePage
+{
+    protected override void Page_Load(object sender, EventArgs e)
+    {
+        base.Page_Load(sender, e);
+    }
+
+    protected void Button1_Click(object sender, EventArgs e)
+    {
+        int result = skin.ExecuteSql("delete from [admin_log_login] where tableName='admin_per_manager' and createDate<'" + DateTime.Now.AddDays(int.Parse(type.SelectedValue)).ToString("yyyy-MM-dd HH:mm:ss") + "'");
+        this.Alert(result > 0 ? "操作成功，已清理 [ " + result + " ] 条信息" : "操作失败，没有清理任何信息");
+    }
+
+    /// <summary>获取数量统计</summary>
+    public string GetSum()
+    {
+        string sql = "select COUNT(id) from [admin_log_login] where tableName='admin_per_manager'";
+        string count1 = skin.ExecuteScalar(sql).ToString();
+        string count2 = skin.ExecuteScalar(sql + " and createDate>'" + DateTime.Now.AddDays(-30).ToString("yyyy-MM-dd HH:mm:ss") + "'").ToString();
+        string count3 = skin.ExecuteScalar(sql + " and createDate<='" + DateTime.Now.AddDays(-30).ToString("yyyy-MM-dd HH:mm:ss") + "'").ToString();
+        return "总数量 [ <a style='color:green'>" + count1 + "</a> ] 条，本月内 [ <a style='color:green'>" + count2 + "</a> ] 条，本月外 [ <a style='color:green'>" + count3 + "</a> ] 条";
+    }
+
+    /// <summary>获取月内统计</summary>
+    public string GetCount()
+    {
+        DataTable dt = skin.GetDT("select left([createDate],10) as '月',COUNT(id) as 记录数 from [admin_log_login] group by left([createDate],10)");
+        StringBuilder html = new StringBuilder();
+        for (int i = 0; i < dt.Rows.Count; i++)
+        {
+            html.Append("<tr>");
+            html.Append("   <td align='center'>" + (i + 1) + "</td>");
+            html.Append("   <td align='center'>" + dt.Rows[i]["月"] + "</td>");
+            html.Append("   <td align='right'>" + dt.Rows[i]["记录数"] + "</td>");
+            html.Append("</tr>");
+        }
+        return html.ToString();
+    }
+}

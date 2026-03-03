@@ -1,0 +1,76 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Admin/master/form.master" CodeFile="1init.aspx.cs" Inherits="Admin_sys_setting_init" %>
+<%@ Register Assembly="NineRays.WebControls.FlyTreeView" Namespace="NineRays.WebControls" TagPrefix="NineRays" %>
+
+<asp:Content ID="Content2" ContentPlaceHolderID="body" Runat="Server">
+    <%=GetPath() %>
+    <div style="height:40px"></div>
+	<div class="container-fluid">
+        <table class="table table-bordered table-hover">
+            <tr>
+                <th width="170">服务器ip地址<br/><b class="form-tip">系统所在服务器的ip地址</b></th>
+                <td><asp:TextBox ID="v1" runat="server" class="form-input" MaxLength="50" autocomplete="off"></asp:TextBox></td>
+            </tr>
+            <tr>
+                <th>服务器端口号<br/><b class="form-tip">系统所在服务器的端口号</b></th>
+                <td><asp:TextBox ID="v2" runat="server" class="form-input" MaxLength="50" autocomplete="off"></asp:TextBox></td>
+            </tr>
+            <tr>
+                <th>网页logo<br/><b class="form-tip">*.png类型文件，尺寸32 x 32</b></th>
+                <td>
+                    <asp:FileUpload ID="FileUpload1" runat="server" class="form-input"/>
+                    <img id="v3" src="/Upload/init/favicon.ico" alt=""/>
+                </td>
+            </tr>
+            <tr>
+                <th>系统logo<br/><b class="form-tip">*.png类型文件，尺寸220 x 70</b></th>
+                <td>
+                    <asp:FileUpload ID="FileUpload2" runat="server" class="form-input"/>
+                    <img id="v4" src="/Upload/init/logo1.png" alt=""/>
+                </td>
+            </tr>
+            <tr>
+                <th>登录logo<br/><b class="form-tip">*.png类型文件，尺寸512 x 512</b></th>
+                <td>
+                    <asp:FileUpload ID="FileUpload3" runat="server" class="form-input"/>
+                    <img id="v5" src="/Upload/init/logo2.png" alt=""/>
+                </td>
+            </tr>
+            <tr>
+                <th>系统打开方式<br/><b class="form-tip">系统的操作方式</b></th>
+                <td>
+                    <asp:DropDownList ID="v6" runat="server">
+                        <asp:ListItem Value="windows">窗体模式</asp:ListItem>
+                        <asp:ListItem Value="menu">菜单模式</asp:ListItem>
+                    </asp:DropDownList>
+                </td>
+            </tr>
+            <tr>
+                <th width="170">行政区域<br/><b class="form-tip ">当前系统使用的顶级行政区域</b></th>
+                <td>
+                    <asp:TextBox ID="v7_1" runat="server" class="form-input" MaxLength="40" autocomplete="off"></asp:TextBox>
+                    <asp:HiddenField ID="v7_2" runat="server"/>
+                </td>
+            </tr>
+            <tr>
+                <td style="padding:20px 200px" colspan="2">
+                    <asp:Button id="Button1" runat="server" class="btn btn-primary" Text="确&nbsp;&nbsp;认" OnClick="Button1_Click"/>
+                    <button class="btn btn-primary" onclick="location.href=location.href">刷&nbsp;&nbsp;新</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+	<div id="treePanel1">
+        <NineRays:FlyTreeView ID="TreeView1" runat="server" Width="398px" Height="450px" ImageSet="Office2003" BackColor="White" BorderWidth="1px" BorderColor="silver" SlideEffect="True" DrawLines="true" Padding="1px"
+            EnableFullRowEvents="true" ContentClickExpands="false" PathSeparator="\" OnInitializedJavascript="onInit1" OnSelectedNodeChangedJavascript="onChanged1" OnPopulateNodes="TreeView1_PopulateNodes">
+            <DefaultStyle Font-Names="Tahoma" Font-Size="14px" ForeColor="Black" RowHeight="23px" Padding="0px;5px;0px;0px"/>
+            <SelectedStyle RowBackColor="#dddddd"/>
+            <HoverStyle RowBackColor="#dddddd"  Font-Underline="True"/>
+            <SelectedHoverStyle BorderStyle="NotSet"></SelectedHoverStyle>
+        </NineRays:FlyTreeView>
+        <script type="text/javascript">
+            var tree1 = new TreeDropDown("treePanel1", "<%=v7_1.ClientID %>", "<%=v7_2.ClientID %>");
+            function onInit1(to) { tree1.treeview = to; }
+            function onChanged1(cid, on, n) { tree1.onSelectedNodeChangedHandler(cid, on, n); }
+        </script>
+    </div>
+</asp:Content>

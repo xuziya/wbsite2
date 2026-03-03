@@ -1,0 +1,13 @@
+﻿using System;
+using harry.Tools;
+public partial class Admin_pages__sys_log_1login_export : AdminBasePage
+{
+    protected override void Page_Load(object sender, EventArgs e)
+    {
+        base.Page_Load(sender, e);
+    }
+    protected void Button1_Click(object sender, EventArgs e)
+    {
+        harry.Tools.Files.Excel.Export(this, harry.DAL.Sql.Sql2008.skin.GetDT("select m1.name as '管理员姓名',m1.uid as '管理员账号',o1.name as '所属机构',t1.indexs as '登录次数',loginIp as '登录ip',t1.createDate as '登录时间',t1.type as '登录结果',t1.note as '备注' from [admin_log_login] as t1 left join admin_per_manager as m1 on t1.createSole=m1.sole left join [admin_organ] as o1 on m1.organSole=o1.sole where tableName='admin_per_manager'"));
+    }
+}

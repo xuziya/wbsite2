@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html style="touch-action: none;">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0" />
+		<title></title>
+		<link rel="stylesheet" href="../../css/normalize.css">
+		<link rel="stylesheet" href="../../css/animate.min.css">
+		<link rel="stylesheet" href="../../css/swiper.min.css">
+		<link rel="stylesheet" href="../../css/liMarquee.css">
+		<link rel="stylesheet" href="../../css/base.css">	
+		<link rel="stylesheet" href="../../css/style.css">	
+		<style>
+			body{background: rgba(0,0,0,0);width: 1800px;height: 860px;}						
+		</style>
+	</head>
+	<body class="animated fadeIn" oncontextmenu="return false" onselectstart="return false" ondragstart="return false;" ondragend="return false;" onbeforecopy="return false" oncopy="document.selection.empty()" onselect="document.selection.empty()">		
+			<div class="panel">
+				<div class="swiper-container">
+					<div class="swiper-wrapper">
+						<div class="swiper-slide">
+							<img src="../../files/1/3千兆小区/乌审旗/安喜嘉园.jpg">
+							<div class="p-box">
+								<p>乌审旗安喜家园小区：位于林荫路电力B区附近，可提供客户接入端口共计604个。</p>
+							</div>
+						</div>
+						<div class="swiper-slide">
+							<img src="../../files/1/3千兆小区/乌审旗/富园A区.jpg">
+							<div class="p-box">
+								<p>乌审旗富园A区小区：位于313省道附近，可提供客户接入端口共计88个。</p>
+							</div>
+						</div>
+						<div class="swiper-slide">
+							<img src="../../files/1/3千兆小区/乌审旗/和兴园.jpg">
+							<div class="p-box">
+								<p>乌审旗和兴园小区：位于达掌线正北方向40米，可提供客户接入端口共计168个。</p>
+							</div>
+						</div>
+						<div class="swiper-slide">
+							<img src="../../files/1/3千兆小区/乌审旗/粮食小区.jpg">
+							<div class="p-box">
+								<p>乌审旗粮食小区：位于林荫路与毛乌素街交叉口西南100米，可提供客户接入端口共计152个。</p>
+							</div>
+						</div>
+						<div class="swiper-slide">
+							<img src="../../files/1/3千兆小区/乌审旗/天园小区.jpg">
+							<div class="p-box">
+								<p>乌审旗天园小区：位于林荫路29号，可提供客户接入端口共计72个。</p>
+							</div>
+						</div>
+						<div class="swiper-slide">
+							<img src="../../files/1/3千兆小区/乌审旗/阳光佳苑A区.jpg">
+							<div class="p-box">
+								<p>乌审旗阳光佳苑A区：位于人民路，可提供客户接入端口共计204个。</p>
+							</div>
+						</div>
+						<div class="swiper-slide">
+							<img src="../../files/1/3千兆小区/乌审旗/阳光佳苑B区.jpg">
+							<div class="p-box">
+								<p>乌审旗阳光佳苑B区：位于人民路阳光佳苑东侧约60米，可提供客户接入端口共计120个。</p>
+							</div>
+						</div>
+						<div class="swiper-slide">
+							<img src="../../files/1/3千兆小区/乌审旗/悦鑫苑小区.jpg">
+							<div class="p-box">
+								<p>乌审旗悦鑫苑小区：位于乌审商会大厦附近，可提供客户接入端口共计1260个。</p>
+							</div>
+						</div>						
+					</div>
+				</div>
+				<div class="table-box">
+					<table class="table">
+						<thead>
+							<tr>
+								<th style="width: 80%;">小区名称</th>
+								<th >可接入用户</th>
+							</tr>						
+						</thead>
+					</table>
+					<div class="scroll">
+						<table class="table gudong">
+							<tbody>
+								<tr>
+									
+								</tr>
+								
+							</tbody>
+						</table>
+					</div>					
+				</div>				
+			</div>	
+
+		<script src="../../js/jquery-1.11.3.min.js"></script>
+		<script src="../../js/jquery.liMarquee.js"></script>
+		<script src="../../js/swiper.min.js"></script>
+		<script src="../../js/swiperEx.js"></script>
+		<script src="../../js/data.json"></script>
+		<script>
+			$(document).ready(function() {
+				createSwiper('.swiper-container', 8000, 300, true);
+				var rows = [];
+				$.each(data.wushenqi,function(i,item){
+					rows.push('<tr><td>'+item.name+'</td><td>'+item.number+'</td></tr>')
+				})
+				$('.gudong tbody').empty().append(rows.join(''));
+				$('.scroll').liMarquee({
+					direction: "up",
+					scrollamount: 50,
+					runshort:false,
+					circular:false
+				})
+			});
+			
+			
+		</script>
+	</body>
+</html>

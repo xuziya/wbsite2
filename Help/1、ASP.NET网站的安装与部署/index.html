@@ -1,0 +1,168 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>1、ASP.NET网站的安装与部署</title>
+    <style type="text/css">
+        *{margin:0;padding:0}
+        body{padding:0 100px}
+        a{color:#333}
+        hr{color:#ccc}
+        ul{list-style:none}
+        ul li{margin:7px}
+        
+        h1{width:100%;text-align:center;margin:10px 30px;padding:20px;border-bottom:1px solid #bbb}
+        h2{margin:20px 0px}
+        h3{margin:20px 30px}
+        h4{margin:20px 60px;font-weight:normal}
+        h5{margin:20px 90px;font-weight:normal}
+    </style>
+</head>
+<body>
+    <!--标题-->
+    <h1>ASP.NET网站的安装与部署</h1>
+
+    <!--目录-->
+    <ul>
+        <li><h2>目录：</h2></li>
+        <li>一、<a href="#menu1">配置ASP.NET环境</a></li>
+        <li>二、<a href="#menu2">应用程序池配置</a></li>
+        <li>三、<a href="#menu3">正式部署与访问测试</a></li>
+        <li>四、<a href="#menu4">可能遇到的问题</a></li>
+    </ul>
+
+    <!--正文-->
+    <h2>正文：</h2>
+    <!--一、配置ASP.NET环境-->
+    <h2 id="menu1">一、配置ASP.NET环境</h2>
+    <div>
+        <h3>1、安装IIs：</h3>
+        <div>
+            <h4>打开控制面板→程序和功能→启用或关闭Windows功能：</h4>
+            <h4><img src="img/1.1%20安装iis.png" /></h4>
+        </div>9
+
+        <h3>2、安装后打开 控制面板 → 管理工具：</h3>
+        <div>
+            <h4><img src="img/1.2%20安装iis后1.png" /></h4>
+            <h4>双击打开（IIS）管理器：</h4>
+            <h4><img src="img/1.2%20安装iis后2.png" /></h4>
+        </div>
+        
+        <h3>3、安装ASP.NET4.0：</h3>
+        <div>
+            <h4>asp.net模块默认和iis直接没有建立任何关联,因此需要建立关联</h4>
+            <h5>（1）、通过目录安装：选择目标程序后，右键以管理员身份运行</h5>
+            <h5><img src="img/1.3.1%20目录安装.png" /></h5>
+            <h5>（2）、通过运行命令安装：使用win+R组合键打开运行，输入cmd后确认，在cmd运行窗口中输入指令后确认</h5>
+            <h5><img src="img/1.3.2%20运行.jpg" /></h5>
+            <h5>安装指令：<br />
+                cd\<br />
+                WINDOWS\Microsoft.NET\Framework\v4.0.30319\aspnet_regiis.exe -i</h5>
+            <h5><img src="img/1.3.2%20安装.png" /></h5>
+            <h5><img src="img/1.3.2%20确认.png" /></h5>
+            <h5>卸载命令：<br />
+                cd\<br />
+                WINDOWS\Microsoft.NET\Framework\v4.0.30319\aspnet_regiis.exe -u
+            </h5>
+        </div>
+    </div>
+    
+    <!--二、应用程序池配置-->
+    <h2 id="menu2">二、应用程序池配置</h2>
+    <div>
+        <h3>1、配置应用程序池环境：打开IIS后添加新的应用程序池</h3>
+        <div>
+            <h4><img src="img/2.1%20应用程序池1.png" /></h4>
+            <h4><img src="img/2.1%20应用程序池2.png" /></h4>
+        </div>
+    </div>
+
+    <!--三、正式部署与访问测试-->
+    <h2 id="menu3">三、正式部署与访问测试</h2>
+    <div>
+        <h3>1、添加网站：</h3>
+        <div>
+            <h4><img src="img/3.1%20添加网站.png" /></h4>
+        </div>
+        <h3>2、配置程序池：</h3>
+        <div>
+            <h4>应用程序池默认版本是v2.0，需手动配置为4.0</h4>
+            <h4><img src="img/3.2%20配置程序池.png" /></h4>
+        </div>
+        <h3>3、配置项目默认页面：</h3>
+        <div>
+            <h4>当前项目的默认页面为：index.html</h4>
+            <h4><img src="img/3.3%20默认页面1.png" /></h4>
+            <h4><img src="img/3.3%20默认页面2.png" /></h4>
+            <h4></h4>
+        </div>
+        <h3>4、权限设定：</h3>
+        <div>
+            <h4>添加俩个特定权限，Internet来宾账户和netWork service俩个账户，允许远程访问</h4>
+            <h4><img src="img/3.4%20权限设定1.png" /></h4>
+            <h4><img src="img/3.4%20权限设定2.png" /></h4>
+            <h4><img src="img/3.4%20权限设定3.png" /></h4>
+            <h4><img src="img/3.4%20权限设定4.png" /></h4>
+            <h4><img src="img/3.4%20权限设定5.png" /></h4>
+            <h4><img src="img/3.4%20权限设定6.png" /></h4>
+            <h4><img src="img/3.4%20权限设定7.png" /></h4>
+            <h4><img src="img/3.4%20权限设定8.png" /></h4>
+        </div>
+        <h3>5、访问测试：</h3>
+        <div>
+            <h4><img src="img/3.5%20访问测试1.png" /></h4>
+            <h4><img src="img/3.5%20访问测试2.jpg" /></h4>
+        </div>
+    </div>
+
+    <!--四、可能遇到的问题-->
+    <h2 id="menu4">四、可能遇到的问题</h2>
+    <div>
+        <h3>1、HTTP Error 500.19 - Internal Server Error </h3>
+        <div>
+            <h4>
+                配置错误: 不能在此路径中使用此配置节。如果在父级别上锁定了该节，便会出现这种情况。锁定是默认设置的(overrideModeDefault="Deny")，或者是通过包含 overrideMode="Deny" 或旧有的 allowOverride="false" 的位置标记明确设置的。
+                出现这个错误是因为 IIS 7 采用了更安全的 web.config 管理机制，默认情况下会锁住配置项不允许更改。要取消锁定可以运行命令行 %windir%\system32\inetsrv\appcmd unlock config -section:system.webServer/handlers 。其中的 handlers 是错误信息中红字显示的节点名称。
+                如果modules也被锁定，可以运行%windir%\system32\inetsrv\appcmd unlock config -section:system.webServer/modules
+                注意：cmd.exe要以管理员身份启动，在c:\windows\system32下找到cmd.exe，右键管理员启动，输入上面的命令即可。
+            </h4>
+        </div>
+        <h3>2、无法识别的属性“targetFramework”</h3>
+        <div>
+            <h4>在我的web.config中有<compilation debug="true" targetFramework="4.0">，不认识4.0的.net。
+在IIS管理器左侧选择“应用程序池”节点，看到右侧列表中有一列 .Net Framework版本，默认你那里应该显示是v2.0,双击这列，在弹出界面中选择 .net 4.0。</h4>
+        </div>
+        <h3>3、IIS 7.5 HTTP 错误 404.3 - Not Found</h3>
+        <div>
+            <h4>
+                1、解决方法如下，打开控制面板，选择程序，在选择默认程序，选择左下角的“程序和功能”；<br />
+                2、在打开的页面选择“打开或关闭Windows功能”；<br />
+                3、然后将“ASP.Net”勾选
+            </h4>
+        </div>
+        <h3>4、HTTP 错误 500.21 - Internal Server Error</h3>
+        <div>
+            <h4>
+                处理程序“PageHandlerFactory-Integrated”在其模块列表中有一个错误模块“ManagedPipelineHandler”
+                原因分析:在安装FrameWorkv4.0后在安装IIS6,导致Framework没有安装完全
+                解决方案:只需要重新安装一下就可以了.在Frameworv4.0的目录中安装的程序以管理员权限重新运行一下就可以了.执行以下命令：
+                %windir%\Microsoft.NET\Framework\v4.0.30319\aspnet_regiis.exe -i
+            </h4>
+        </div>
+        <h3>5、用户 'IIS APPPOOL\IdealTest' 登录失败</h3>
+        <div>
+            <h4>
+                原因，web.config文件中的数据库连接使用的是windows身份验证
+                <add connectionString="server=DEVIL-PC;database=mydatabase;Integrated Security=True" name="ConnectionString" />
+                在IIS管理器左侧选择“应用程序池”节点，看到右侧列表中有一列 标识，默认你那里应该显示是ApplicationPoolIdentity，选择你的网站，右键高级设置，改变设置为NetWorkService。
+            </h4>
+        </div>
+        <h3>6、用户 NT AUTHORITY\NETWORK SERVICE 登录失败</h3>
+        <div>
+            <h4>解决办法，打开数据库，看看是不是有这个用户，如果没有自己添加一下。</h4>
+        </div>
+    </div>
+
+</body>
+</html>

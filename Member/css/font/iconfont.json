@@ -1,0 +1,212 @@
+{
+  "id": "",
+  "name": "",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "145467",
+      "name": "不开心",
+      "font_class": "bukaixin",
+      "unicode": "e64b",
+      "unicode_decimal": 58955
+    },
+    {
+      "icon_id": "145475",
+      "name": "开心",
+      "font_class": "kaixin",
+      "unicode": "e653",
+      "unicode_decimal": 58963
+    },
+    {
+      "icon_id": "742126",
+      "name": "角色管理",
+      "font_class": "jiaoseguanli",
+      "unicode": "ea62",
+      "unicode_decimal": 60002
+    },
+    {
+      "icon_id": "975382",
+      "name": "返回",
+      "font_class": "return",
+      "unicode": "e6ba",
+      "unicode_decimal": 59066
+    },
+    {
+      "icon_id": "1288666",
+      "name": "姓名",
+      "font_class": "xingming",
+      "unicode": "e61a",
+      "unicode_decimal": 58906
+    },
+    {
+      "icon_id": "1418214",
+      "name": "规则",
+      "font_class": "guize",
+      "unicode": "e606",
+      "unicode_decimal": 58886
+    },
+    {
+      "icon_id": "2076374",
+      "name": "对勾小",
+      "font_class": "duigouxiao",
+      "unicode": "e8bd",
+      "unicode_decimal": 59581
+    },
+    {
+      "icon_id": "2087563",
+      "name": "职业",
+      "font_class": "zhiye",
+      "unicode": "e607",
+      "unicode_decimal": 58887
+    },
+    {
+      "icon_id": "2455951",
+      "name": "待办提醒",
+      "font_class": "daibantixing",
+      "unicode": "e627",
+      "unicode_decimal": 58919
+    },
+    {
+      "icon_id": "3199596",
+      "name": "劳动技能",
+      "font_class": "drxx14",
+      "unicode": "e713",
+      "unicode_decimal": 59155
+    },
+    {
+      "icon_id": "3996617",
+      "name": "返回",
+      "font_class": "fanhui",
+      "unicode": "e641",
+      "unicode_decimal": 58945
+    },
+    {
+      "icon_id": "4775573",
+      "name": "职业",
+      "font_class": "zhiye1",
+      "unicode": "e75a",
+      "unicode_decimal": 59226
+    },
+    {
+      "icon_id": "5387522",
+      "name": "关闭",
+      "font_class": "guanbi",
+      "unicode": "eaf2",
+      "unicode_decimal": 60146
+    },
+    {
+      "icon_id": "6204084",
+      "name": "对勾",
+      "font_class": "duigou",
+      "unicode": "e605",
+      "unicode_decimal": 58885
+    },
+    {
+      "icon_id": "6582353",
+      "name": "升级",
+      "font_class": "shengji",
+      "unicode": "e63c",
+      "unicode_decimal": 58940
+    },
+    {
+      "icon_id": "7366000",
+      "name": "业务",
+      "font_class": "yewu",
+      "unicode": "e608",
+      "unicode_decimal": 58888
+    },
+    {
+      "icon_id": "8328456",
+      "name": "性别区分",
+      "font_class": "tongxingbie",
+      "unicode": "e619",
+      "unicode_decimal": 58905
+    },
+    {
+      "icon_id": "8802645",
+      "name": "待办2",
+      "font_class": "daiban",
+      "unicode": "e64c",
+      "unicode_decimal": 58956
+    },
+    {
+      "icon_id": "9626974",
+      "name": "音乐",
+      "font_class": "yinle",
+      "unicode": "e888",
+      "unicode_decimal": 59528
+    },
+    {
+      "icon_id": "10584851",
+      "name": "年龄",
+      "font_class": "nianling",
+      "unicode": "e69d",
+      "unicode_decimal": 59037
+    },
+    {
+      "icon_id": "11459683",
+      "name": "待办",
+      "font_class": "daiban1",
+      "unicode": "e63e",
+      "unicode_decimal": 58942
+    },
+    {
+      "icon_id": "12437192",
+      "name": "快速升级",
+      "font_class": "kuaisushengjix",
+      "unicode": "e62e",
+      "unicode_decimal": 58926
+    },
+    {
+      "icon_id": "12752179",
+      "name": "历史记录",
+      "font_class": "lishijilu_huaban",
+      "unicode": "e617",
+      "unicode_decimal": 58903
+    },
+    {
+      "icon_id": "14682654",
+      "name": "icon-name",
+      "font_class": "name",
+      "unicode": "e63f",
+      "unicode_decimal": 58943
+    },
+    {
+      "icon_id": "17659577",
+      "name": "升级",
+      "font_class": "shengji1",
+      "unicode": "e613",
+      "unicode_decimal": 58899
+    },
+    {
+      "icon_id": "21053830",
+      "name": "业务",
+      "font_class": "yewu1",
+      "unicode": "e68a",
+      "unicode_decimal": 59018
+    },
+    {
+      "icon_id": "21333642",
+      "name": "技能分",
+      "font_class": "jinengfen",
+      "unicode": "e609",
+      "unicode_decimal": 58889
+    },
+    {
+      "icon_id": "21649092",
+      "name": "爱好",
+      "font_class": "ziyuan25",
+      "unicode": "e60a",
+      "unicode_decimal": 58890
+    },
+    {
+      "icon_id": "27594524",
+      "name": "技能",
+      "font_class": "a-bianzu49",
+      "unicode": "e62b",
+      "unicode_decimal": 58923
+    }
+  ]
+}
