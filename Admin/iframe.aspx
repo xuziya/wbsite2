@@ -39,9 +39,10 @@
         /*顶部菜单*/
         function topMenuClick(top)
         {
-            $("#<%=leftMenus_html.ClientID %>").children("ul").each(function ()
+            var index = $(top).index();
+            $("#<%=leftMenus_html.ClientID %>").children("ul").each(function (i)
             {
-                if ($(this).index() == $(top).index()) { $(this).show(); }
+                if (i == index) { $(this).show(); }
                 else { $(this).hide(); }
             });
         }

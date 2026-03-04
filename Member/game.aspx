@@ -648,14 +648,71 @@
                             else { self.setPoint1(-10);self.setPoint2(-5); } 
                         }
 
-                        var log1 = check1.find("p").eq(0).html().replace("1、","").replace("2、","").replace("3、","").replace("4、","").replace("5、","");
+                        var log1 = check1.find("p").eq(0).html().replace("1、","").replace("2、","").replace("3、","").replace("4、","").replace("5、","").replace("A、","").replace("B、","").replace("C、","").replace("D、","").replace("E、","").trim();
                         var log2 = check1.attr("replay");
-                        //设置对话
-                        self.is_talk = true;
-                        self.setDialog(log1, log2);
-                        //设置聊天记录
-                        $("#jilu_html").append($("<li class='chat-cont-r clear'><div class='face-right'><img src='"+self.headImage+"' /></div><div class='face-right-cont'><div class='name'>我</div><p class='cont-pop cont-pop2'>"+log1+"</p></div></li>"));
-                        $("#jilu_html").append($("<li class='chat-cont-l clear'><div class='face-left'><img src='"+($("#<%=member_image1.ClientID %>").attr("src").replace("-.png",".jpg"))+"' /></div><div class='face-left-cont'><div class='name'>客户</div><p class='cont-pop cont-pop1'>"+log2+"</p></div></li>"));
+                        
+                        // 调用大模型获取客户回复
+                        var chatHistory = [];
+                        $("#jilu_html li").each(function() {
+                            var name = $(this).find(".name").text();
+                            var content = $(this).find(".cont-pop").text();
+                            chatHistory.push({"role": name === "我" ? "user" : "assistant", "content": content});
+                        });
+                        chatHistory.push({"role": "user", "content": log1});
+                        
+                        var customerInfo = {
+                            "name": "客户",
+                            "age": "30",
+                            "background": "普通用户，需要合适的通信套餐"
+                        };
+                        
+                        $.ajax({
+                            type: "POST",
+                            url: "game.aspx/GetCustomerResponse",
+                            data: JSON.stringify({chatHistory: chatHistory, customerInfo: customerInfo}),
+                            contentType: "application/json; charset=utf-8",
+                            dataType: "json",
+                            success: function(response) {
+                                if (response.d) {
+                                    var aiResponse = response.d;
+                                    log2 = aiResponse;
+                                    
+                                    // 设置对话
+                                    self.is_talk = true;
+                                    self.setDialog(log1, log2);
+                                    // 设置聊天记录
+                                    $("#jilu_html").append($("<li class='chat-cont-r clear'><div class='face-right'><img src='"+self.headImage+"' /></div><div class='face-right-cont'><div class='name'>我</div><p class='cont-pop cont-pop2'>"+log1+"</p></div></li>"));
+                                    $("#jilu_html").append($("<li class='chat-cont-l clear'><div class='face-left'><img src='"+($("#<%=member_image1.ClientID %>").attr("src").replace("-.png",".jpg"))+"' /></div><div class='face-left-cont'><div class='name'>客户</div><p class='cont-pop cont-pop1'>"+log2+"</p></div></li>"));
+                                    
+                                    // 调用大模型评估对话
+                                    $.ajax({
+                                        type: "POST",
+                                        url: "game.aspx/EvaluateDialog",
+                                        data: JSON.stringify({dialogHistory: chatHistory}),
+                                        contentType: "application/json; charset=utf-8",
+                                        dataType: "json",
+                                        success: function(evalResponse) {
+                                            if (evalResponse.d) {
+                                                var evaluation = evalResponse.d;
+                                                console.log("Evaluation: " + evaluation);
+                                            }
+                                        },
+                                        error: function(xhr, status, error) {
+                                            console.error("Error evaluating dialog: " + error);
+                                        }
+                                    });
+                                }
+                            },
+                            error: function(xhr, status, error) {
+                                console.error("Error getting customer response: " + error);
+                                // 出错时使用默认回复
+                                self.is_talk = true;
+                                self.setDialog(log1, log2);
+                                // 设置聊天记录
+                                $("#jilu_html").append($("<li class='chat-cont-r clear'><div class='face-right'><img src='"+self.headImage+"' /></div><div class='face-right-cont'><div class='name'>我</div><p class='cont-pop cont-pop2'>"+log1+"</p></div></li>"));
+                                $("#jilu_html").append($("<li class='chat-cont-l clear'><div class='face-left'><img src='"+($("#<%=member_image1.ClientID %>").attr("src").replace("-.png",".jpg"))+"' /></div><div class='face-left-cont'><div class='name'>客户</div><p class='cont-pop cont-pop1'>"+log2+"</p></div></li>"));
+                            }
+                        });
 
                         //轮数+1
                         self.rounds++;

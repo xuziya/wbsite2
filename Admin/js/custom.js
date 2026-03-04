@@ -22,23 +22,27 @@ jQuery(function ($)
     });
 
     /*二级菜单*/
-    $(".sidebar-dropdown > a").click(function ()
+    $(".sidebar-dropdown > a").click(function (e)
     {
-        $(".sidebar-submenu").slideUp(250);
+        // 阻止事件冒泡，防止嵌套菜单触发父级菜单的点击事件
+        e.stopPropagation();
+        
+        // 只关闭同级的下拉菜单，不关闭嵌套的下拉菜单
+        $(this).parent().siblings().find(".sidebar-submenu").slideUp(250);
+        $(this).parent().siblings().removeClass("active");
+        $(this).parent().siblings().find("i").css("transform", "rotate(0deg)");
+        
         if ($(this).parent().hasClass("active"))
         {
-            $(".sidebar-dropdown").find("i").css("transform", "rotate(0deg)");
-            $(".sidebar-dropdown").removeClass("active");
             $(this).parent().removeClass("active");
             $(this).parent().find("i").css("transform", "rotate(0deg)");
+            $(this).next(".sidebar-submenu").slideUp(250);
         }
         else
         {
-            $(".sidebar-dropdown").find("i").css("transform", "rotate(0deg)");
-            $(".sidebar-dropdown").removeClass("active");
-            $(this).next(".sidebar-submenu").slideDown(250);
             $(this).parent().addClass("active");
-            $(this).parent().find("i").css("transform", "rotate(90deg)")
+            $(this).parent().find("i").css("transform", "rotate(90deg)");
+            $(this).next(".sidebar-submenu").slideDown(250);
         }
     });
     $(".sidebar-dropdown").first().addClass("active");

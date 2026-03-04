@@ -2,6 +2,7 @@
 using System.Data;
 using System.Text;
 using harry.DAL.Sql.Sql2008;
+using Tools;
 
 public partial class Member_game : MemberBasePage
 {
@@ -27,10 +28,16 @@ public partial class Member_game : MemberBasePage
 
     public StringBuilder date = new StringBuilder();    //数据集合
 
+    private DeepSeekAPI deepSeekAPI;    //DeepSeek API客户端
+
     private string contents = "";
     protected override void Page_Load(object sender, EventArgs e)
     {
         base.Page_Load(sender, e);
+        //初始化DeepSeek API客户端
+        string baseUrl = System.Configuration.ConfigurationManager.AppSettings["DeepSeekBaseUrl"];
+        string apiKey = System.Configuration.ConfigurationManager.AppSettings["DeepSeekApiKey"];
+        deepSeekAPI = new DeepSeekAPI(baseUrl, apiKey);
         //game.aspx?sid=104&mid=105&pids=148,148,135,140,148,135&pid=5
 
         //房间编号
@@ -402,5 +409,92 @@ public partial class Member_game : MemberBasePage
             html.Append("<li id=" + dt.Rows[i]["id"] + " title=" + dt.Rows[i]["name"] + " time=" + dt.Rows[i]["createDate"] + "><p>" + (i + 1) + "、" + dt.Rows[i]["name"] + "</p><span>" + DateTime.Parse(dt.Rows[i]["createDate"].ToString()).ToString("yyyy-MM-dd") + "</span></li>");
         }
         return html.ToString();
+    }
+
+    /// <summary>获取客户回应</summary>
+    /// <param name="chatHistory">对话历史</param>
+    /// <param name="customerInfo">客户信息</param>
+    /// <returns>客户回应</returns>
+    [System.Web.Services.WebMethod]
+    public static string GetCustomerResponse(object chatHistory, object customerInfo)
+    {
+        Member_game page = new Member_game();
+        return page.GetCustomerResponseInternal(chatHistory, customerInfo);
+    }
+
+    /// <summary>获取随机客户角色信息</summary>
+    /// <returns>随机客户角色信息</returns>
+    private string GetRandomCustomerInfo()
+    {
+        // 从数据库中获取所有客户信息
+        DataTable dt = skin.GetDT("select top 5 * from member_info order by newid()");
+        if (dt.Rows.Count > 0)
+        {
+            // 随机选择一个客户信息
+            int randomIndex = new Random().Next(0, dt.Rows.Count);
+            DataRow row = dt.Rows[randomIndex];
+            
+            // 构建客户信息对象
+            var customerInfo = new {
+                name = row["character1"].ToString(),
+                age = row["age"].ToString(),
+                sex = row["sex"].ToString(),
+                type = row["type"].ToString(),
+                shuxing1 = row["shuxing1"].ToString(),
+                shuxing2 = row["shuxing2"].ToString(),
+                shuxing3 = row["shuxing3"].ToString(),
+                shuxing4 = row["shuxing4"].ToString(),
+                shuxing5 = row["shuxing5"].ToString()
+            };
+            
+            return Newtonsoft.Json.JsonConvert.SerializeObject(customerInfo);
+        }
+        return "{}";
+    }
+
+    /// <summary>内部获取客户回应方法</summary>
+    /// <param name="chatHistory">对话历史</param>
+    /// <param name="customerInfo">客户信息</param>
+    /// <returns>客户回应</returns>
+    private string GetCustomerResponseInternal(object chatHistory, object customerInfo)
+    {
+        // 转换参数格式
+        string context = Newtonsoft.Json.JsonConvert.SerializeObject(chatHistory);
+        string customerContext = Newtonsoft.Json.JsonConvert.SerializeObject(customerInfo);
+        return deepSeekAPI.GetCustomerResponse(context, customerContext);
+    }
+
+    /// <summary>评估对话</summary>
+    /// <param name="dialogHistory">对话历史</param>
+    /// <returns>评估结果</returns>
+    [System.Web.Services.WebMethod]
+    public static string EvaluateDialog(object dialogHistory)
+    {
+        Member_game page = new Member_game();
+        return page.EvaluateDialogInternal(dialogHistory);
+    }
+
+    /// <summary>内部评估对话方法</summary>
+    /// <param name="dialogHistory">对话历史</param>
+    /// <returns>评估结果</returns>
+    private string EvaluateDialogInternal(object dialogHistory)
+    {
+        string dialogContext = Newtonsoft.Json.JsonConvert.SerializeObject(dialogHistory);
+        // 使用默认评分标准
+        string scoringCriteria = "根据对话内容，评估学员的话术是否专业、准确、有针对性，是否能够有效引导客户购买合适的套餐。评分范围为1-5分，5分为最佳。请返回评分和详细评价。";
+        string evaluation = deepSeekAPI.EvaluateDialog(dialogContext, scoringCriteria);
+        
+        // 解析评估结果
+        return ParseEvaluationResult(evaluation);
+    }
+
+    /// <summary>解析评估结果</summary>
+    /// <param name="evaluation">评估结果</param>
+    /// <returns>解析后的评估结果</returns>
+    private string ParseEvaluationResult(string evaluation)
+    {
+        // 简单的解析逻辑，实际项目中可能需要更复杂的解析
+        // 这里假设评估结果包含评分和评价
+        return evaluation;
     }
 }
