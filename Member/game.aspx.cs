@@ -461,7 +461,38 @@ public partial class Member_game : MemberBasePage
         // 转换参数格式
         string context = Newtonsoft.Json.JsonConvert.SerializeObject(chatHistory);
         string customerContext = Newtonsoft.Json.JsonConvert.SerializeObject(customerInfo);
-        return deepSeekAPI.GetCustomerResponse(context, customerContext);
+        string response = deepSeekAPI.GetCustomerResponse(context, customerContext);
+        
+        // 保存对话记录到数据库
+        SaveDialogLog(chatHistory, response);
+        
+        return response;
+    }
+    
+    /// <summary>保存对话记录到数据库</summary>
+    /// <param name="chatHistory">对话历史</param>
+    /// <param name="customerResponse">客户回应</param>
+    private void SaveDialogLog(object chatHistory, string customerResponse)
+    {
+        try
+        {
+            // 转换对话历史为字符串
+            string dialogContent = Newtonsoft.Json.JsonConvert.SerializeObject(chatHistory);
+            dialogContent += "\n客户：" + customerResponse;
+            
+            // 获取学员名称
+            string studentName = GetName();
+            
+            // 保存到数据库
+            string sql = string.Format("insert into llm_log (studentName, dialogContent, score, dialogTime) values('{0}', '{1}', 0, '{2}')", 
+                studentName, dialogContent.Replace("'", "''"), DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
+            skin.ExecuteSql(sql);
+        }
+        catch (Exception ex)
+        {
+            // 记录错误日志
+            System.Diagnostics.Debug.WriteLine("SaveDialogLog error: " + ex.Message);
+        }
     }
 
     /// <summary>评估对话</summary>
@@ -485,7 +516,62 @@ public partial class Member_game : MemberBasePage
         string evaluation = deepSeekAPI.EvaluateDialog(dialogContext, scoringCriteria);
         
         // 解析评估结果
-        return ParseEvaluationResult(evaluation);
+        string result = ParseEvaluationResult(evaluation);
+        
+        // 保存评估结果到数据库
+        SaveEvaluationResult(dialogHistory, result);
+        
+        return result;
+    }
+    
+    /// <summary>保存评估结果到数据库</summary>
+    /// <param name="dialogHistory">对话历史</param>
+    /// <param name="evaluation">评估结果</param>
+    private void SaveEvaluationResult(object dialogHistory, string evaluation)
+    {
+        try
+        {
+            // 提取评分
+            double score = ExtractScore(evaluation);
+            
+            // 获取学员名称
+            string studentName = GetName();
+            
+            // 转换对话历史为字符串
+            string dialogContent = Newtonsoft.Json.JsonConvert.SerializeObject(dialogHistory);
+            
+            // 查找最新的对话记录并更新评分和评估结果
+            string sql = string.Format("update llm_log set score = {0}, evaluation = '{1}' where studentName = '{2}' order by dialogTime desc", 
+                score, evaluation.Replace("'", "''"), studentName);
+            skin.ExecuteSql(sql);
+        }
+        catch (Exception ex)
+        {
+            // 记录错误日志
+            System.Diagnostics.Debug.WriteLine("SaveEvaluationResult error: " + ex.Message);
+        }
+    }
+    
+    /// <summary>从评估结果中提取评分</summary>
+    /// <param name="evaluation">评估结果</param>
+    /// <returns>评分</returns>
+    private double ExtractScore(string evaluation)
+    {
+        try
+        {
+            // 简单的评分提取逻辑，实际项目中可能需要更复杂的解析
+            // 假设评估结果包含类似"评分：4.5"这样的文本
+            System.Text.RegularExpressions.Match match = System.Text.RegularExpressions.Regex.Match(evaluation, @"评分：([0-9.]+)");
+            if (match.Success)
+            {
+                return double.Parse(match.Groups[1].Value);
+            }
+        }
+        catch (Exception ex)
+        {
+            System.Diagnostics.Debug.WriteLine("ExtractScore error: " + ex.Message);
+        }
+        return 0;
     }
 
     /// <summary>解析评估结果</summary>
